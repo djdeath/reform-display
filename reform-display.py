@@ -21,7 +21,7 @@ buffer_width = 126
 buffer_height = 32
 
 def program_kbd(argb_data):
-    return
+#    return
     cmd = 'xWBIT'
     path = '/dev/hidraw3'
 
