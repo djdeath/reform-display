@@ -21,7 +21,7 @@ buffer_width = 126
 buffer_height = 32
 
 def program_kbd(argb_data):
-#    return
+    return
     cmd = 'xWBIT'
     path = '/dev/hidraw3'
 
@@ -57,41 +57,6 @@ has_update = False
 cairo_surf = cairo.ImageSurface(cairo.Format.ARGB32, buffer_width, buffer_height)
 
 ctx = cairo.Context(cairo_surf)
-
-####
-def load_bitmap_font():
-    loader = GdkPixbuf.PixbufLoader()
-    loader.write(open('reform2kbdbitmapfont.png', 'rb').read())
-    loader.close()
-    return loader.get_pixbuf()
-
-bitmapfont = load_bitmap_font()
-
-class Character(object):
-    def __init__(self, char, x, y, w, h):
-        self.char = char,
-        self.x = x
-        self.y = y
-        self.w = w
-        self.h = h
-
-def load_character_row(table, x, y, w, h, characters):
-    for offset in range(0, len(characters)):
-        c = characters[offset]
-        table[c] = Character(c, x + offset * w, y, w, h)
-
-def load_characters():
-    character_table = {}
-    rows = [
-        [chr(c) for c in range(ord(' '), ord('?') + 1)],
-        [chr(c) for c in range(ord('@'), ord('_') + 1)],
-        [chr(c) for c in range(ord('a'), ord('z') + 1)],
-    ]
-    load_character_row(character_table, 0,  8, 6, 7, rows[0])
-    load_character_row(character_table, 0, 16, 6, 7, rows[1])
-    load_character_row(character_table, 6, 24, 6, 7, rows[2])
-
-character_table = load_characters()
 
 ####
 class StaticText(object):
